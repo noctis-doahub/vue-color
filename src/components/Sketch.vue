@@ -55,6 +55,7 @@
         </div>
       </template>
     </div>
+    <button v-if="hasResetButton" class="vc-sketch-reset-btn" @click="handleReset">Clear</button>
   </div>
 </template>
 
@@ -95,6 +96,10 @@ export default {
       default: false
     },
     disableFields: {
+      type: Boolean,
+      default: false
+    },
+    hasResetButton: {
       type: Boolean,
       default: false
     }
@@ -142,6 +147,9 @@ export default {
           source: 'rgba'
         })
       }
+    },
+    handleReset () {
+      this.$emit('reset')
     }
   }
 }
@@ -156,6 +164,7 @@ export default {
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .15);
+  overflow: hidden;
 }
 
 .vc-sketch-saturation-wrap {
@@ -275,5 +284,31 @@ export default {
 
 .vc-sketch__disable-alpha .vc-sketch-color-wrap {
   height: 10px;
+}
+
+.vc-sketch-reset-btn {
+  cursor: pointer;
+  margin-top: 3px;
+  background-color: #f8f9fa;
+  color: #444;
+  float: right!important;
+  margin-bottom: .25rem!important;
+  padding: .25rem .5rem;
+  font-size: 11px;
+  line-height: 1.5;
+  border-radius: .2rem;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid #ddd;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.vc-sketch-reset-btn:hover,
+.vc-sketch-reset-btn:focus,
+.vc-sketch-reset-btn:active {
+  border: 1px solid #ddd;
 }
 </style>

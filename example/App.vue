@@ -20,7 +20,7 @@
     <div class="demo-container">
       <div class="demo-list">
         <div class="demo-item">
-          <sketch-picker v-model="colors"></sketch-picker>
+          <sketch-picker v-model="colors" :hasResetButton="true" @reset="onReset"></sketch-picker>
           <h2>Sketch</h2>
         </div>
         <div class="demo-item">
@@ -128,6 +128,9 @@ export default {
     },
     updateValue (value) {
       this.colors = value
+    },
+    onReset() {
+      console.log('reset')
     }
   },
   created () {
